@@ -1,5 +1,4 @@
 "use client";
-import { DotPatternDemo } from "@/components/Background";
 import {
   Navbar,
   NavBody,
@@ -12,6 +11,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import HeroPage from "./Hero";
 
 export function NavbarDemo() {
   const navItems = [
@@ -83,17 +83,17 @@ export function NavbarDemo() {
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-      <DummyContent />
+      <HeroContent />
 
       {/* Navbar */}
     </div>
   );
 }
 
-const DummyContent = () => {
+const HeroContent = () => {
   return (
     <div className="container mx-auto p-1 pt-24">
-      <DotPatternDemo />
+      <HeroPage />
     </div>
   );
 };
