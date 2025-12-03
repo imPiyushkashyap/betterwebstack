@@ -3,13 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { Textarea } from "@/components/ui/textarea";
 import {
   ExpandableScreen,
   ExpandableScreenContent,
   ExpandableScreenTrigger,
 } from "@/components/ui/expandable-screen";
 import { MorphyButton } from "./ui/morphy-button";
+import { FaFacebook, FaInstagram, FaMedium } from "react-icons/fa";
+import { Textarea } from "./ui/textarea";
+import { CiMail } from "react-icons/ci";
+import Link from "next/link";
+import { BsTwitter, BsTwitterX } from "react-icons/bs";
 
 const ExpandableScreenDemo = () => {
   const nameId = useId();
@@ -96,25 +100,63 @@ const ExpandableScreenDemo = () => {
             </div>
 
             <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-primary-foreground/20">
-              <p className="text-sm sm:text-base text-primary-foreground leading-[200%] mb-4">
-                Better tools. Better performance. Better results. That&apos;s
-                what modern web stacks deliver.
-              </p>
-              <div className="flex items-center gap-3 sm:gap-4">
-                {/* <Image
-                  src="/placeholder.svg?height=48&width=48"
-                  alt="Alex Rivera"
-                  width={48}
-                  height={48}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
-                /> */}
+              <div className="flex flex-col gap-4">
+                {/* Email */}
                 <div>
-                  <p className="text-base sm:text-lg lg:text-xl text-primary-foreground">
-                    Piyush Kashyap
+                  <p className="text-sm text-primary-foreground/70 mb-1">
+                    Email us
                   </p>
-                  <p className="text-sm sm:text-base text-primary-foreground/70">
-                    Founder, BetterWebStack
+                  <Link
+                    href="mailto:piyush.freelancer.in@gmail.com
+"
+                    className="text-base sm:text-lg text-primary-foreground hover:underline flex items-center gap-2"
+                  >
+                    <CiMail className="w-5 h-5" />
+                    piyush.freelancer.in@gmail.com
+                  </Link>
+                </div>
+
+                {/* Socials */}
+                <div>
+                  <p className="text-sm text-primary-foreground/70 mb-2">
+                    Follow us
                   </p>
+                  <div className="flex gap-3">
+                    <Link
+                      href="https://medium.com/@betterwebstack"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground hover:text-primary-foreground/70 transition"
+                    >
+                      <FaMedium className="w-6 h-6" />
+                    </Link>
+
+                    <Link
+                      href="https://www.instagram.com/betterwebstack"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground hover:text-primary-foreground/70 transition"
+                    >
+                      <FaInstagram className="w-6 h-6" />
+                    </Link>
+
+                    <Link
+                      href="https://www.facebook.com/profile.php?id=61583604343715"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground hover:text-primary-foreground/70 transition"
+                    >
+                      <FaFacebook className="w-6 h-6" />
+                    </Link>
+                    <Link
+                      href="https://x.com/betterwebstack"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground hover:text-primary-foreground/70 transition"
+                    >
+                      <BsTwitterX className="w-6 h-6" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,6 +176,7 @@ const ExpandableScreenDemo = () => {
                   id={nameId}
                   name="name"
                   className="text-background"
+                  placeholder="Enter your Full Name"
                 />
               </div>
 
