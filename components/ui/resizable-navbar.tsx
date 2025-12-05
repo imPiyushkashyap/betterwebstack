@@ -7,6 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
+import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 
@@ -123,23 +124,38 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => {
+        // Check if current path matches the item link
+        const isActive = typeof window !== 'undefined' && window.location.pathname === item.link;
+        
+        return (
+          <a
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className={cn(
+              "relative px-4 py-2",
+              isActive 
+                ? "text-black dark:text-white font-semibold" 
+                : "text-neutral-600 dark:text-neutral-300"
+            )}
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {(hovered === idx || isActive) && (
+              <motion.div
+                layoutId="hovered"
+                className={cn(
+                  "absolute inset-0 h-full w-full rounded-full",
+                  isActive 
+                    ? "bg-gray-200 dark:bg-neutral-700" 
+                    : "bg-gray-100 dark:bg-neutral-800"
+                )}
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        );
+      })}
     </motion.div>
   );
 };
@@ -230,14 +246,14 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
+    <Link
+      href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <span className="font-medium text-black dark:text-white">
         BetterWebStack
       </span>
-    </a>
+    </Link>
   );
 };
 
