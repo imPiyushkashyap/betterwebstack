@@ -10,6 +10,7 @@ interface VercelCardProps
   animateOnHover?: boolean;
   glowEffect?: boolean;
   bordered?: boolean;
+  contentClassName?: string;
 }
 
 function VercelCard({
@@ -20,6 +21,7 @@ function VercelCard({
   animateOnHover = false,
   glowEffect = false,
   bordered = true,
+  contentClassName,
   ...props
 }: VercelCardProps) {
   return (
@@ -71,7 +73,7 @@ function VercelCard({
         />
       )}
 
-      <div className="relative h-full w-full p-6 flex flex-col items-center justify-center">
+      <div className={cn("relative h-full w-full p-6 flex flex-col items-center justify-center", contentClassName)}>
         {children}
       </div>
     </motion.div>
