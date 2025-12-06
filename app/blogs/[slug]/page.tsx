@@ -1,108 +1,81 @@
-"use client"
+import { client } from "@/lib/sanity"
+import { PortableText } from "@portabletext/react"
+import UnderlineButton from "@/components/UnderlineButton"
 
-import { useParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import { NavbarDemo } from "@/component/Navbar"
-import { VercelCard } from "@/components/VercelCard"
-import type { BlogPost } from "@/types/blog"
-import { Triangle } from "lucide-react"
-
-// Skeleton loader for individual blog post
-function BlogPostSkeleton() {
-  return (
-    <div className="animate-pulse">
-      <div className="h-12 bg-muted rounded w-3/4 mb-6" />
-      <div className="flex items-center gap-4 mb-8">
-        <div className="h-4 bg-muted rounded w-24" />
-        <div className="h-4 bg-muted rounded w-32" />
-      </div>
-      <div className="h-96 bg-muted rounded mb-8" />
-      <div className="space-y-4">
-        <div className="h-4 bg-muted rounded w-full" />
-        <div className="h-4 bg-muted rounded w-full" />
-        <div className="h-4 bg-muted rounded w-5/6" />
-        <div className="h-4 bg-muted rounded w-full" />
-        <div className="h-4 bg-muted rounded w-4/6" />
-      </div>
-    </div>
-  )
+interface Props {
+  params: Promise<{ slug: string }>
 }
 
-export default function BlogPostPage() {
-  const params = useParams()
-  const slug = params.slug as string
-  const [post, setPost] = useState<BlogPost | null>(null)
-  const [loading, setLoading] = useState(true)
+interface BlogPost {
+  title: string
+  date: string
+  body: any
+  author: {
+    name: string
+  }
+  mainImage?: {
+    asset: any
+  }
+  readTime?: number
+}
 
-  useEffect(() => {
-    // TODO: Replace with actual Sanity fetch
-    // Example: fetchBlogPost(slug).then(setPost).finally(() => setLoading(false))
-    
-    // Temporary mock data for demonstration
-    setTimeout(() => {
-      setPost({
-        id: "1",
-        title: "Sample Blog Post",
-        slug: slug,
-        description: "This is a sample blog post description that will be replaced with actual Sanity data.",
-        date: "Dec 5, 2024",
-        authors: [{ name: "Author Name" }],
-        icon: Triangle,
-        mainImage: "/placeholder.svg",
-        content: "Full blog post content will be rendered here from Sanity CMS.",
-      })
-      setLoading(false)
-    }, 1000)
-  }, [slug])
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+
+  const query = `*[_type == "post" && slug.current == $slug][0]{
+    title,
+    "date": publishedAt,
+    body,
+    author->{name},
+    mainImage,
+    readTime
+  }`
+
+  const post: BlogPost | null = await client.fetch(query, { slug })
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-background text-foreground p-6">
+        <div className="max-w-3xl mx-auto pt-10 md:pt-32">
+           <UnderlineButton href="/blogs" />
+           <p className="text-center mt-10 text-muted-foreground">Post not found</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <NavbarDemo />
-      <div className="mx-auto max-w-4xl px-6 pt-24 pb-16">
-        {loading ? (
-          <BlogPostSkeleton />
-        ) : post ? (
-          <article>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              {post.title}
-            </h1>
-            
-            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
-              <span>{post.date}</span>
+    <article className="min-h-screen bg-background text-foreground">
+      <div className="max-w-3xl mx-auto p-6 pt-10 md:pt-32">
+        <div className="mb-10">
+          <UnderlineButton href="/blogs" />
+        </div>
+
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+          {post.title}
+        </h1>
+
+        <div className="flex items-center gap-4 text-sm text-foreground mb-10">
+          <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+          <span>•</span>
+          <span>{post.author?.name}</span>
+          {post.readTime && (
+            <>
               <span>•</span>
-              <span>{post.authors.map((a) => a.name).join(", ")}</span>
-            </div>
+              <span>{post.readTime} min read</span>
+            </>
+          )}
+        </div>
 
-            {post.mainImage && (
-              <div className="mb-8 rounded-lg overflow-hidden">
-                <img
-                  src={post.mainImage}
-                  alt={post.title}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            )}
+        <div className="prose dark:prose-invert max-w-none">
+          <PortableText value={post.body} />
+        </div>
 
-            <div className="prose prose-invert max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {post.description}
-              </p>
-              
-              {/* TODO: Render Sanity block content here */}
-              <div className="mt-8">
-                {post.content}
-              </div>
-            </div>
-          </article>
-        ) : (
-          <div className="text-center py-16">
-            <h1 className="text-3xl font-bold mb-4">Blog post not found</h1>
-            <p className="text-muted-foreground">
-              The blog post you're looking for doesn't exist.
-            </p>
-          </div>
-        )}
+        <p className="text-foreground text-sm mt-12 pt-10 border-t border-border">
+          Published by{" "}
+          <span className="text-foreground font-bold">{post.author?.name}</span>
+        </p>
       </div>
-    </main>
+    </article>
   )
 }

@@ -7,7 +7,6 @@ import { BlogCardSkeletonGrid } from "@/components/BlogCardSkeleton"
 import { NavbarDemo } from "@/component/Navbar"
 import type { BlogPost } from "@/types/blog"
 import { fetchBlogPosts } from "@/lib/blog"
-
 import { Construction } from "lucide-react"
 
 export default function BlogPage() {
@@ -15,13 +14,8 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    console.log("Fetching blog posts...");
     fetchBlogPosts()
-      .then((data) => {
-        console.log("Fetched posts:", data);
-        setPosts(data);
-      })
-      .catch((err) => console.error("Error fetching posts:", err))
+      .then(setPosts)
       .finally(() => setLoading(false))
   }, [])
 

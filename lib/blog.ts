@@ -13,12 +13,16 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
       title,
       slug,
       description,
+      excerpt,
       publishedAt,
       author->{name, image{asset, alt}},
-      mainImage{asset, alt},
+      mainImage{asset, alt, caption},
       content,
       categories,
-      tags
+      tags,
+      readTime,
+      featuredPost,
+      seo
     }`
 
         const posts: SanityBlogPost[] = await client.fetch(query)
@@ -26,7 +30,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         return posts.map(transformSanityPost)
     } catch (error) {
         console.error('Error fetching blog posts from Sanity:', error)
-        return []
+        throw error
     }
 }
 
@@ -42,12 +46,16 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null
       title,
       slug,
       description,
+      excerpt,
       publishedAt,
       author->{name, image{asset, alt}},
-      mainImage{asset, alt},
+      mainImage{asset, alt, caption},
       content,
       categories,
-      tags
+      tags,
+      readTime,
+      featuredPost,
+      seo
     }`
 
         const post: SanityBlogPost = await client.fetch(query, { slug })
@@ -71,12 +79,12 @@ function transformSanityPost(post: SanityBlogPost): BlogPost {
     const authors: Author[] = Array.isArray(post.author)
         ? post.author.map(author => ({
             name: author.name,
-            avatar: author.image?.asset ? urlFor(author.image).width(100).height(100).url() : undefined,
+            avatar: author.image?.asset ? urlFor(author.image).url() : undefined,
         }))
         : post.author
             ? [{
                 name: post.author.name,
-                avatar: post.author.image?.asset ? urlFor(post.author.image).width(100).height(100).url() : undefined,
+                avatar: post.author.image?.asset ? urlFor(post.author.image).url() : undefined,
             }]
             : []
 
@@ -91,10 +99,28 @@ function transformSanityPost(post: SanityBlogPost): BlogPost {
         title: post.title,
         slug: post.slug.current,
         description: post.description || '',
+        excerpt: post.excerpt,
         date,
         authors,
         icon: Triangle, // You can customize this based on categories or tags
-        mainImage: post.mainImage?.asset ? urlFor(post.mainImage).width(800).height(400).url() : undefined,
+        mainImage: post.mainImage?.asset ? {
+            url: urlFor(post.mainImage).url(),
+            alt: post.mainImage.alt,
+            caption: post.mainImage.caption,
+        } : undefined,
         content: post.content,
+        categories: post.categories,
+        tags: post.tags,
+        readTime: post.readTime,
+        featuredPost: post.featuredPost,
+        seo: post.seo ? {
+            title: post.seo.metaTitle,
+            description: post.seo.metaDescription,
+            keywords: post.seo.metaKeywords,
+            ogImage: post.seo.openGraphImage?.asset ? urlFor(post.seo.openGraphImage).url() : undefined,
+            noIndex: post.seo.noIndex,
+            noFollow: post.seo.noFollow,
+            canonicalUrl: post.seo.canonicalUrl,
+        } : undefined,
     }
 }
