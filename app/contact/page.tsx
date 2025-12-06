@@ -1,6 +1,13 @@
 import ExpandableScreenDemo from "@/components/ContactScreen";
 import UnderlineButton from "@/components/UnderlineButton"; // adjust path as needed
-import React from "react";
+
+export const metadata = {
+  title: " Contact | BetterWebStack",
+  description: "Build fast and better stack for your next web project",
+  alternates: {
+    canonical: "https://betterwebstack.vercel.app/",
+  },
+};
 
 const ContactPage = () => {
   return (

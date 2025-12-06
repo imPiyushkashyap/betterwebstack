@@ -26,7 +26,7 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
 
   return (
     <>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 py-8">
+      <section className="grid grid-cols-1 gap-6 py-8">
         {displayedPosts.map((post) => {
           const Icon = post.icon || Triangle
           
@@ -35,29 +35,48 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
               <VercelCard 
                 animateOnHover={false} 
                 glowEffect={false} 
-                className="cursor-pointer bg-background h-full transition-transform hover:scale-[1.02]"
-                contentClassName="p-0 items-stretch justify-start"
+                className="cursor-pointer bg-background h-full transition-transform hover:scale-[1.01]"
+                contentClassName="p-0"
               >
-                <article className="p-6 md:p-8 h-full w-full">
-                  <div className="flex items-start justify-between mb-6">
-                    <Icon className="h-8 w-8 text-foreground" strokeWidth={1.5} />
-                    <span className="text-sm text-muted-foreground">{post.date}</span>
+                <article className="flex flex-col md:flex-row h-full w-full overflow-hidden">
+                  {/* Image Section - Left Side */}
+                  <div className="w-full md:w-1/3 min-h-[200px] md:min-h-full bg-muted relative flex items-center justify-center overflow-hidden">
+                    {post.mainImage?.url ? (
+                      <img 
+                        src={post.mainImage.url} 
+                        alt={post.mainImage.alt || post.title}
+                        className="w-full h-full object-cover absolute inset-0"
+                      />
+                    ) : (
+                      <Icon className="h-16 w-16 text-muted-foreground/20" strokeWidth={1} />
+                    )}
                   </div>
-                  
-                  <h2 className="text-xl font-semibold mb-4 leading-tight text-foreground">
-                    {post.title}
-                  </h2>
-                  
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-6">
-                    {post.description}
-                  </p>
-                  
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground">
-                      {post.authors.length > 2
-                        ? `${post.authors[0].name}, ${post.authors[1].name}, and ${post.authors.length - 2} others`
-                        : post.authors.map((a) => a.name).join(" and ")}
-                    </span>
+
+                  {/* Content Section - Right Side */}
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground">
+                      <time dateTime={post.date}>{post.date}</time>
+                      {post.readTime && (
+                        <>
+                          <span>•</span>
+                          <span>{post.readTime} min read</span>
+                        </>
+                      )}
+                    </div>
+                    
+                    <h2 className="text-xl md:text-2xl font-bold mb-3 leading-tight text-foreground">
+                      {post.title}
+                    </h2>
+                    
+                    <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2 md:line-clamp-3">
+                      {post.description}
+                    </p>
+                    
+                    <div className="flex items-center gap-2 mt-auto">
+                      <span className="text-sm font-medium text-foreground">
+                        {post.authors.length > 0 ? post.authors[0].name : 'Anonymous'}
+                      </span>
+                    </div>
                   </div>
                 </article>
               </VercelCard>

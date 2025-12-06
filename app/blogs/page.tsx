@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { BlogCTA } from "@/components/BlogCTA"
-import { FeaturedPosts } from "@/components/FeaturePost"
-import { BlogCardSkeletonGrid } from "@/components/BlogCardSkeleton"
-import { NavbarDemo } from "@/component/Navbar"
-import type { BlogPost } from "@/types/blog"
-import { fetchBlogPosts } from "@/lib/blog"
-import { Construction } from "lucide-react"
+import { useEffect, useState } from "react";
+import { BlogCTA } from "@/components/BlogCTA";
+import { FeaturedPosts } from "@/components/FeaturePost";
+import { BlogCardSkeletonGrid } from "@/components/BlogCardSkeleton";
+import { NavbarDemo } from "@/component/Navbar";
+import type { BlogPost } from "@/types/blog";
+import { fetchBlogPosts } from "@/lib/blog";
+import { Construction } from "lucide-react";
+
+// export const metadata = {
+//   title: " Blogs | BetterWebStack",
+//   description: "Build fast and better stack for your next web project",
+// };
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([])
-  const [loading, setLoading] = useState(true)
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchBlogPosts()
       .then(setPosts)
-      .finally(() => setLoading(false))
-  }, [])
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -33,11 +38,10 @@ export default function BlogPage() {
               <Construction className="h-8 w-8 text-muted-foreground" />
             </div>
             <h2 className="text-2xl font-bold mb-2">We are working on it</h2>
-            
           </div>
         )}
         <BlogCTA />
       </div>
     </main>
-  )
+  );
 }
