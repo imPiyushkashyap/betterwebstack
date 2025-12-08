@@ -5,7 +5,7 @@ export const metadata = {
   title: " Contact | BetterWebStack",
   description: "Build fast and better stack for your next web project",
   alternates: {
-    canonical: "https://betterwebstack.vercel.app/",
+    canonical: "https://betterwebstack.vercel.app/contact",
   },
 };
 

@@ -26,7 +26,7 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
 
   return (
     <>
-      <section className="grid grid-cols-1 gap-6 py-8">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
         {displayedPosts.map((post) => {
           const Icon = post.icon || Triangle
           
@@ -38,23 +38,23 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
                 className="cursor-pointer bg-background h-full transition-transform hover:scale-[1.01]"
                 contentClassName="p-0"
               >
-                <article className="flex flex-col md:flex-row h-full w-full overflow-hidden">
-                  {/* Image Section - Left Side */}
-                  <div className="w-full md:w-1/3 min-h-[200px] md:min-h-full bg-muted relative flex items-center justify-center overflow-hidden">
+                <article className="flex flex-col h-full w-full overflow-hidden">
+                  {/* Image Section - Top */}
+                  <div className="w-full h-48 bg-muted relative flex items-center justify-center overflow-hidden border-b border-neutral-200 dark:border-neutral-800">
                     {post.mainImage?.url ? (
                       <img 
                         src={post.mainImage.url} 
                         alt={post.mainImage.alt || post.title}
-                        className="w-full h-full object-cover absolute inset-0"
+                        className="w-full h-full object-cover absolute inset-0 transition-transform duration-300 group-hover/canvas-card:scale-105"
                       />
                     ) : (
-                      <Icon className="h-16 w-16 text-muted-foreground/20" strokeWidth={1} />
+                      <Icon className="h-12 w-12 text-muted-foreground/20" strokeWidth={1} />
                     )}
                   </div>
 
-                  {/* Content Section - Right Side */}
-                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
-                    <div className="flex items-center gap-2 mb-3 text-sm text-muted-foreground">
+                  {/* Content Section - Bottom */}
+                  <div className="flex-1 p-5 flex flex-col">
+                    <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground font-medium">
                       <time dateTime={post.date}>{post.date}</time>
                       {post.readTime && (
                         <>
@@ -64,16 +64,16 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
                       )}
                     </div>
                     
-                    <h2 className="text-xl md:text-2xl font-bold mb-3 leading-tight text-foreground">
+                    <h2 className="text-lg font-bold mb-2 leading-tight text-foreground line-clamp-2">
                       {post.title}
                     </h2>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-2 md:line-clamp-3">
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
                       {post.description}
                     </p>
                     
-                    <div className="flex items-center gap-2 mt-auto">
-                      <span className="text-sm font-medium text-foreground">
+                    <div className="flex items-center gap-2 mt-auto pt-2">
+                      <span className="text-xs font-medium text-foreground">
                         {post.authors.length > 0 ? post.authors[0].name : 'Anonymous'}
                       </span>
                     </div>
