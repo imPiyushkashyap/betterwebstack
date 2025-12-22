@@ -6,7 +6,7 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
-interface BlogPost {
+interface SingleBlogPost {
   title: string
   date: string
   body: any
@@ -31,7 +31,7 @@ export default async function BlogPostPage({ params }: Props) {
     readTime
   }`
 
-  const post: BlogPost | null = await client.fetch(query, { slug })
+  const post: SingleBlogPost | null = await client.fetch(query, { slug })
 
   if (!post) {
     return (

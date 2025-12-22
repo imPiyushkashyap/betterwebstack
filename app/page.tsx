@@ -1,5 +1,5 @@
-import { NavbarDemo } from "@/component/Navbar";
-import HeroPage from "@/component/Hero";
+import { NavbarDemo } from "@/components/Navbar";
+import HeroPage from "@/components/Hero";
 
 export const metadata = {
   title: " BetterWebStack",

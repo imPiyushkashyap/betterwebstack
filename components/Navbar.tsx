@@ -11,10 +11,12 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { navItems } from "@/types/navbar";
+import Link from "next/link";
 
 export function NavbarDemo() {
-
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -22,9 +24,11 @@ export function NavbarDemo() {
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
-        <NavItems items={navItems} />
+        <NavItems items={navItems} currentPath={pathname} />
         <div className="flex items-center gap-4">
-          <NavbarButton variant="primary">Book a call</NavbarButton>
+          <Link href="#booking">
+            <NavbarButton variant="primary">Book a call</NavbarButton>
+          </Link>
         </div>
       </NavBody>
 
@@ -43,7 +47,7 @@ export function NavbarDemo() {
           onClose={() => setIsMobileMenuOpen(false)}
         >
           {navItems.map((item, idx) => {
-            const isActive = typeof window !== 'undefined' && window.location.pathname === item.link;
+            const isActive = pathname === item.link;
             
             return (
               <a
@@ -61,13 +65,14 @@ export function NavbarDemo() {
             );
           })}
           <div className="flex w-full flex-col gap-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
-            </NavbarButton>
+            <Link href="#booking" onClick={() => setIsMobileMenuOpen(false)}>
+              <NavbarButton
+                variant="primary"
+                className="w-full"
+              >
+                Book a call
+              </NavbarButton>
+            </Link>
           </div>
         </MobileNavMenu>
       </MobileNav>

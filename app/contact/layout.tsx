@@ -1,10 +1,4 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-
-const geist = Geist({
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Contact Us | BetterWebStack",
@@ -19,17 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function ContactLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${geist.className} antialiased`}>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  );
+  return <>{children}</>;
 }
+

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Triangle } from "lucide-react"
 import { VercelCard } from "./VercelCard"
 import { Button } from "./ui/button"
@@ -42,10 +43,12 @@ export function FeaturedPosts({ posts, initialDisplayCount = 6 }: FeaturedPostsP
                   {/* Image Section - Top */}
                   <div className="w-full h-48 bg-muted relative flex items-center justify-center overflow-hidden border-b border-neutral-200 dark:border-neutral-800">
                     {post.mainImage?.url ? (
-                      <img 
+                      <Image 
                         src={post.mainImage.url} 
                         alt={post.mainImage.alt || post.title}
-                        className="w-full h-full object-cover absolute inset-0 transition-transform duration-300 group-hover/canvas-card:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover/canvas-card:scale-105"
                       />
                     ) : (
                       <Icon className="h-12 w-12 text-muted-foreground/20" strokeWidth={1} />

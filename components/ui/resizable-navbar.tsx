@@ -29,6 +29,7 @@ interface NavItemsProps {
   }[];
   className?: string;
   onItemClick?: () => void;
+  currentPath?: string;
 }
 
 interface MobileNavProps {
@@ -113,7 +114,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ items, className, onItemClick, currentPath }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
@@ -125,8 +126,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => {
-        // Check if current path matches the item link
-        const isActive = typeof window !== 'undefined' && window.location.pathname === item.link;
+        const isActive = currentPath === item.link;
         
         return (
           <a
