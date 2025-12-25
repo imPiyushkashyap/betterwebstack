@@ -5,12 +5,12 @@ import Link from "next/link";
 export function HeroCTA() {
   return (
     <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-      <Link href="#booking">
-        <Button size="lg" className="h-12 gap-2 px-8 text-base font-medium">
+      <Button asChild size="lg" className="h-12 gap-2 px-8 text-base font-medium">
+        <Link href="#booking">
           <Calendar className="h-4 w-4" />
           Book a Free Call
-        </Button>
-      </Link>
+        </Link>
+      </Button>
       <Button
         size="lg"
         variant="outline"

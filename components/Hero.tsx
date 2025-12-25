@@ -6,6 +6,8 @@ import CalBooKing from "@/components/Cal";
 import { HeroBadge } from "@/components/hero/HeroBadge";
 import { HeroCTA } from "@/components/hero/HeroCTA";
 import { TrustIndicators } from "@/components/hero/TrustIndicators";
+import Solutions from "@/components/Solutions";
+import Pricing from "@/components/Pricing";
 
 const HeroPage = () => {
   return (
@@ -40,6 +42,12 @@ const HeroPage = () => {
         <div>
           <CardHoverEffectDemo />
         </div>
+
+        {/* Solutions Section */}
+        <Solutions />
+
+        {/* Pricing Section */}
+        <Pricing />
         
         {/* Cal.com Booking Section */}
         <div className="w-full py-12">

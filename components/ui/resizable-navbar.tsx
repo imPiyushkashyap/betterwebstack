@@ -129,7 +129,7 @@ export const NavItems = ({ items, className, onItemClick, currentPath }: NavItem
         const isActive = currentPath === item.link;
         
         return (
-          <a
+          <Link
             onMouseEnter={() => setHovered(idx)}
             onClick={onItemClick}
             className={cn(
@@ -153,7 +153,7 @@ export const NavItems = ({ items, className, onItemClick, currentPath }: NavItem
               />
             )}
             <span className="relative z-20">{item.name}</span>
-          </a>
+          </Link>
         );
       })}
     </motion.div>

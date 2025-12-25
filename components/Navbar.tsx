@@ -26,9 +26,9 @@ export function NavbarDemo() {
         <NavbarLogo />
         <NavItems items={navItems} currentPath={pathname} />
         <div className="flex items-center gap-4">
-          <Link href="#booking">
-            <NavbarButton variant="primary">Book a call</NavbarButton>
-          </Link>
+          <NavbarButton as={Link} href="#booking" variant="primary">
+            Book a call
+          </NavbarButton>
         </div>
       </NavBody>
 
@@ -50,7 +50,7 @@ export function NavbarDemo() {
             const isActive = pathname === item.link;
             
             return (
-              <a
+              <Link
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -61,18 +61,19 @@ export function NavbarDemo() {
                 }
               >
                 <span className="block">{item.name}</span>
-              </a>
+              </Link>
             );
           })}
           <div className="flex w-full flex-col gap-4">
-            <Link href="#booking" onClick={() => setIsMobileMenuOpen(false)}>
-              <NavbarButton
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
-            </Link>
+            <NavbarButton
+              as={Link}
+              href="#booking"
+              onClick={() => setIsMobileMenuOpen(false)}
+              variant="primary"
+              className="w-full"
+            >
+              Book a call
+            </NavbarButton>
           </div>
         </MobileNavMenu>
       </MobileNav>
