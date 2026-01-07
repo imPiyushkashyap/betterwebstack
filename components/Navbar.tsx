@@ -26,7 +26,7 @@ export function NavbarDemo() {
         <NavbarLogo />
         <NavItems items={navItems} currentPath={pathname} />
         <div className="flex items-center gap-4">
-          <NavbarButton as={Link} href="#booking" variant="primary">
+          <NavbarButton as={Link} href="/#booking" variant="primary">
             Book a call
           </NavbarButton>
         </div>
@@ -67,7 +67,7 @@ export function NavbarDemo() {
           <div className="flex w-full flex-col gap-4">
             <NavbarButton
               as={Link}
-              href="#booking"
+              href="/#booking"
               onClick={() => setIsMobileMenuOpen(false)}
               variant="primary"
               className="w-full"

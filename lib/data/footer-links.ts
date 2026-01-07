@@ -11,10 +11,10 @@ export const footerLinks: FooterLinkGroup[] = [
         group: "Product",
         items: [
             { title: "Features", href: "#" },
-            { title: "Solution", href: "#" },
-            { title: "Customers", href: "#" },
-            { title: "Pricing", href: "#" },
-            { title: "About", href: "#" },
+            { title: "Solution", href: "/#solution" },
+            { title: "Customers", href: "/#customers" },
+            { title: "Pricing", href: "/#pricing" },
+            { title: "About", href: "/#about" },
         ],
     },
     {
