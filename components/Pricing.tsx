@@ -1,73 +1,85 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { Check, Sparkles, Zap, Crown } from "lucide-react";
+import UnderlineButton from "@/components/UnderlineButton";
+
+type Currency = 'INR' | 'USD';
 
 const plans = [
   {
     name: "Starter",
     description: "Perfect for small businesses and personal projects",
-    price: "$2,499",
+    price: {
+      USD: "$5",
+      INR: "₹499"
+    },
     period: "one-time",
     icon: Zap,
     popular: false,
     features: [
-      "5-page Next.js website",
-      "Mobile responsive design",
-      "Basic SEO optimization",
-      "Contact form integration",
-      "1 month of support",
-      "Deployment included"
+      "One-time build or short engagement",
+      "Clearly defined scope",
+      "Fast, focused delivery",
+      "No long-term commitment",
     ],
-    cta: "Get Started",
+    cta: "Book a Call",
     variant: "outline" as const
   },
   {
-    name: "Professional",
+    name: "Growth",
     description: "For growing businesses that need more power",
-    price: "$5,999",
+    price: {
+      USD: "$12",
+      INR: "₹1199"
+    },
     period: "one-time",
     icon: Sparkles,
     popular: true,
     features: [
-      "10-page Next.js website",
-      "Advanced SEO & analytics",
-      "CRM integration",
-      "AI chatbot integration",
-      "Blog/CMS setup",
-      "3 months of support",
+      "Monthly or phased collaboration",
+      "Automations + AI workflows",
+      "Continuous improvements",
+      "Priority access & support",
       "Performance optimization",
-      "Custom animations"
     ],
-    cta: "Get Started",
+    cta: "Book a Call",
     variant: "default" as const
   },
   {
     name: "Enterprise",
     description: "Full-scale solution for established businesses",
-    price: "Custom",
+    price: {
+      USD: "Custom",
+      INR: "Custom"
+    },
     period: "quote",
     icon: Crown,
     popular: false,
     features: [
-      "Unlimited pages",
-      "Custom integrations",
-      "Advanced automation",
+      "Fully custom workflow",
+      "Built around your business logic",
+      "Long-term technical partnership",
       "Priority support",
       "Dedicated account manager",
       "SLA guarantee",
       "Custom AI training",
       "Multi-language support"
     ],
-    cta: "Contact Us",
+    cta: "Book a Call",
     variant: "outline" as const
   }
 ];
 
 export default function Pricing() {
+  const [currency, setCurrency] = useState<Currency>('INR');
+
   const scrollToBooking = () => {
     const bookingSection = document.getElementById("booking");
     if (bookingSection) {
@@ -86,9 +98,32 @@ export default function Pricing() {
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Transparent Pricing
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your needs. No hidden fees, no surprises—just quality work delivered.
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            Choose the plan that fits your needs. No hidden fees, no surprises, just quality work delivered.
           </p>
+
+          {/* Currency Toggle */}
+          <div className="flex items-center justify-center gap-3">
+            <Label 
+              htmlFor="currency-toggle" 
+              className={`text-sm font-medium cursor-pointer ${currency === 'INR' ? 'text-primary' : 'text-muted-foreground'}`}
+              onClick={() => setCurrency('INR')}
+            >
+              INR (₹)
+            </Label>
+            <Switch
+              id="currency-toggle"
+              checked={currency === 'USD'}
+              onCheckedChange={(checked) => setCurrency(checked ? 'USD' : 'INR')}
+            />
+            <Label 
+              htmlFor="currency-toggle" 
+              className={`text-sm font-medium cursor-pointer ${currency === 'USD' ? 'text-primary' : 'text-muted-foreground'}`}
+              onClick={() => setCurrency('USD')}
+            >
+              USD ($)
+            </Label>
+          </div>
         </div>
 
         {/* Pricing Cards */}
@@ -122,7 +157,7 @@ export default function Pricing() {
               
               <CardContent className="flex-1">
                 <div className="text-center mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className="text-4xl font-bold">{plan.price[currency]}</span>
                   {plan.period !== "quote" && (
                     <span className="text-muted-foreground ml-1">/{plan.period}</span>
                   )}
@@ -156,15 +191,10 @@ export default function Pricing() {
 
         {/* Additional Info */}
         <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
             All plans include free consultation. Need something custom?{" "}
-            <button 
-              onClick={scrollToBooking}
-              className="text-primary hover:underline font-medium"
-            >
-              Let&apos;s talk
-            </button>
-          </p>
+            <UnderlineButton label="Let's talk" href="#booking" />
+          </div>
         </div>
       </div>
     </section>

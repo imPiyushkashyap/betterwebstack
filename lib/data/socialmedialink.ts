@@ -1,14 +1,8 @@
-import { FaFacebook, FaInstagram, FaMedium } from "react-icons/fa";
+import { FaFacebook, FaInstagram, } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import type { SocialMediaLink } from "@/lib/types";
 
 export const socialMediaLinks: SocialMediaLink[] = [
-    {
-        name: "Medium",
-        url: "https://medium.com/@betterwebstack",
-        icon: FaMedium,
-        ariaLabel: "Follow us on Medium",
-    },
     {
         name: "Instagram",
         url: "https://www.instagram.com/betterwebstack",

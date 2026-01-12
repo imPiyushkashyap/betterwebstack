@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FooterLinks } from "@/components/footer/FooterLinks";
 import { FooterSocials } from "@/components/footer/FooterSocials";
+import UnderlineButton from "@/components/UnderlineButton";
 
 export default function FooterSection() {
   return (
@@ -8,17 +9,21 @@ export default function FooterSection() {
       <div className="mx-auto max-w-5xl px-6">
         <div className="grid gap-12 md:grid-cols-5">
           <div className="md:col-span-2">
-            <Link href="/" aria-label="go home" className="block size-fit">
-              BetterWebStack
-            </Link>
+            <UnderlineButton label="BetterWebStack" />
           </div>
 
           <FooterLinks />
         </div>
-        <div className="mt-12 flex flex-wrap items-end justify-between gap-6 border-t py-6">
-          <span className="text-muted-foreground order-last block text-center text-sm md:order-first">
-            © {new Date().getFullYear()} BetterWebStack, All rights reserved
-          </span>
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t-[3px] py-8">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <span className="text-muted-foreground text-sm whitespace-nowrap">
+              © {new Date().getFullYear()} BetterWebStack
+            </span>
+            <div className="flex gap-4 text-sm text-muted-foreground">
+              <UnderlineButton href="/terms" label="Terms" />
+              <UnderlineButton href="/privacy" label="Privacy" />
+            </div>
+          </div>
           <FooterSocials />
         </div>
       </div>
