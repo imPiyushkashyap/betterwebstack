@@ -31,9 +31,8 @@ const HeroPage = () => {
         <AnimatedTextGenerateDemo />
         
         <p className="mt-6 text-balance text-center text-lg text-muted-foreground md:text-xl">
-          BetterWebStack delivers Next.js sites with everything baked in, killer
-          SEO, CRM tools, AI chatbots, analytics, and automation that actually
-          makes sense.
+         BetterWebStack builds websites powered by AI that talk to your customers, capture leads, and handle follow-ups automatically.
+
         </p>
         
         <HeroCTA />

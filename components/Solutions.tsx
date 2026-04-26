@@ -2,73 +2,9 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Code2, 
-  Search, 
-  Bot, 
-  BarChart3, 
-  Zap, 
-  Palette,
-  ArrowRight
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const solutions = [
-  {
-    id: "nextjs-development",
-    icon: Code2,
-    title: "Next.js Development",
-    description: "Lightning-fast, SEO-optimized websites built with the latest Next.js features including App Router, Server Components, and edge runtime.",
-    badge: "Core",
-    color: "text-blue-500",
-    features: ["App Router", "Server Components", "Edge Runtime"]
-  },
-  {
-    id: "seo-optimization",
-    icon: Search,
-    title: "SEO Optimization",
-    description: "Comprehensive SEO strategies including technical SEO, content optimization, and structured data to boost your search rankings.",
-    badge: "Growth",
-    color: "text-green-500",
-    features: ["Technical SEO", "Meta Optimization", "Rich Snippets"]
-  },
-  {
-    id: "ai-chatbots",
-    icon: Bot,
-    title: "AI Chatbots",
-    description: "Intelligent conversational AI powered by the latest LLMs to engage visitors, answer questions, and convert leads 24/7.",
-    badge: "AI",
-    color: "text-purple-500",
-    features: ["Custom Training", "Lead Capture", "24/7 Support"]
-  },
-  {
-    id: "analytics-crm",
-    icon: BarChart3,
-    title: "Analytics & CRM",
-    description: "Deep insights into user behavior with integrated CRM tools to track, nurture, and convert your leads effectively.",
-    badge: "Data",
-    color: "text-orange-500",
-    features: ["User Tracking", "Lead Scoring", "Conversion Funnels"]
-  },
-  {
-    id: "automation",
-    icon: Zap,
-    title: "Automation",
-    description: "Streamline your workflows with smart automation for email sequences, lead routing, and business processes.",
-    badge: "Efficiency",
-    color: "text-yellow-500",
-    features: ["Email Flows", "Webhooks", "Integrations"]
-  },
-  {
-    id: "ui-ux-design",
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces designed to delight users and maximize conversions with modern design principles.",
-    badge: "Design",
-    color: "text-pink-500",
-    features: ["Responsive", "Accessible", "Dark Mode"]
-  }
-];
+import { solutions } from "@/lib/data/solutions";
 
 export default function Solutions() {
   return (
@@ -121,7 +57,7 @@ export default function Solutions() {
                     </span>
                   ))}
                 </div>
-                <Link href={`/solutions#${solution.id}`} className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-primary transition-colors cursor-pointer inline-flex">
+                <Link href={`/solutions/${solution.id}`} className="mt-4 flex items-center text-sm text-muted-foreground group-hover:text-primary transition-colors cursor-pointer inline-flex">
                   <span>Learn more</span>
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>

@@ -5,33 +5,33 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
     {
-        title: "Next.js Websites",
+        title: "AI Receptionist",
         description:
-            "Modern, high-performance websites built with clean code, strong SEO, and a future-ready tech stack.",
+            "An AI assistant on your website that answers customer queries instantly so you never miss a lead.",
     },
     {
-        title: "Custom CMS",
+        title: "Smart Conversations",
         description:
-            "Lightweight, easy-to-use content systems designed for fast publishing and full control without complexity.",
+            "AI engages visitors in real time, answers questions, and keeps them moving forward.",
     },
     {
-        title: "AI Automation",
+        title: "Lead Capture",
         description:
-            "Smart workflows that save time, from AI chatbots to automated lead capture, replies, and scheduling.",
+            "Capture emails, phone numbers, and messages automatically—all organized in your CRM.",
     },
     {
-        title: "Integrations",
+        title: "Auto Booking",
         description:
-            "Connect your tools effortlessly, including CRM, payments, analytics, marketing platforms, and internal systems.",
+            "AI lets customers book calls or meetings without any back-and-forth.",
     },
     {
-        title: "Analytics & Insights",
+        title: "Follow-Up Engine",
         description:
-            "Track what matters with clean dashboards, user behavior insights, and clear reporting.",
+            "Send automated emails or WhatsApp messages to warm up leads and keep conversations going.",
     },
     {
-        title: "Business Automation",
+        title: "Custom Systems",
         description:
-            "End-to-end automations that reduce repetitive work and help teams operate faster with fewer resources.",
+            "AI workflows tailored to your business, from simple tasks to full automation.",
     },
 ];

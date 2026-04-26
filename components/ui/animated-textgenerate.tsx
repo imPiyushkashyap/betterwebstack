@@ -12,7 +12,7 @@ interface AnimatedTextGenerateProps {
   blurEffect?: boolean;
   speed?: number;
   highlightWords?: string[];
-  highlightClassName?: string;
+  highlightClassName?: string | string[];
   linkWords?: string[];
   linkHrefs?: string[];
   linkClassNames?: string[];
@@ -61,11 +61,17 @@ export const AnimatedTextGenerate = ({
 
           const isUpcoming =
             idx >= visibleCount && idx < visibleCount + capsuleCount;
-          const isHighlight =
-            highlightWords.length > 0 &&
-            highlightWords.some((hw) =>
-              word.toLowerCase().includes(hw.toLowerCase())
-            );
+          
+          const highlightIndex = highlightWords.findIndex((hw) =>
+            word.toLowerCase().includes(hw.toLowerCase())
+          );
+          const isHighlight = highlightIndex !== -1;
+          const currentHighlightClassName = isHighlight
+            ? Array.isArray(highlightClassName)
+              ? highlightClassName[highlightIndex]
+              : highlightClassName
+            : "";
+
           const linkIndex = linkWords.findIndex((lw) =>
             word.toLowerCase().includes(lw.toLowerCase())
           );
@@ -89,7 +95,7 @@ export const AnimatedTextGenerate = ({
                 }}
                 className={cn(
                   "dark:text-white text-black",
-                  isHighlight && highlightClassName
+                  isHighlight && currentHighlightClassName
                 )}
               >
                 {word}
