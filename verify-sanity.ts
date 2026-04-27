@@ -1,12 +1,6 @@
-import * as dotenv from 'dotenv';
 import path from 'path';
 
-// Load environment variables from .env.local
-const envPath = path.resolve(process.cwd(), '.env.local');
-console.log('Loading env from:', envPath);
-const result = dotenv.config({ path: envPath });
-console.log('Dotenv result:', result.error ? result.error : 'Success');
-console.log('PROJECT_ID after load:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+console.log('PROJECT_ID automatically loaded by Bun:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
 
 async function verifySanityFetch() {
     // Dynamic imports to ensure env vars are loaded first

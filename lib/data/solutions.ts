@@ -14,69 +14,69 @@ export interface SolutionItem {
 
 export const solutions: SolutionItem[] = [
   {
-    id: "nextjs-development",
+    id: "ai-driven-websites",
     icon: Code2,
-    title: "Next.js Development",
-    description: "Lightning-fast, SEO-optimized websites built with the latest Next.js features including App Router, Server Components, and edge runtime.",
+    title: "AI-Powered Websites",
+    description: "Websites built as active systems that talk to visitors, capture intent, and trigger actions automatically.",
     badge: "Core",
     color: "text-blue-500",
-    features: ["App Router", "Server Components", "Edge Runtime"],
-    detailedContent: "Our Next.js development services provide you with a cutting-edge web presence. By leveraging the latest features like the App Router and Server Components, we ensure your site loads instantly and scales effortlessly. We build with the future in mind, delivering a seamless experience for your users and robust architecture for your business. We also seamlessly integrate [SEO optimization](/solutions/seo-optimization) to ensure your blazing-fast new site ranks perfectly on Google.",
-    benefits: ["Sub-second page loads", "Perfect Core Web Vitals", "Seamless integrations", "Future-proof architecture"]
+    features: ["Real-Time Interaction", "Action-Based Flows", "Scalable Systems"],
+    detailedContent: "I build websites that do more than display information. These systems interact with visitors, understand intent, and trigger actions like lead capture or booking automatically. Each setup is designed to turn traffic into real business outcomes while staying fast and reliable. We integrate these seamlessly with [Conversation Funnels](/solutions/conversation-funnels) to guide users from interest to action.",
+    benefits: ["Captures leads automatically", "Engages visitors instantly", "Built for real business use", "Scales as you grow"]
   },
   {
-    id: "seo-optimization",
+    id: "conversation-funnels",
     icon: Search,
-    title: "SEO Optimization",
-    description: "Comprehensive SEO strategies including technical SEO, content optimization, and structured data to boost your search rankings.",
+    title: "Conversation Funnels",
+    description: "Turn visitors into conversations and qualified leads using AI-driven flows designed for conversion.",
     badge: "Growth",
     color: "text-green-500",
-    features: ["Technical SEO", "Meta Optimization", "Rich Snippets"],
-    detailedContent: "Rank higher and drive more organic traffic with our comprehensive SEO optimization. We go beyond basic keywords, diving deep into technical SEO, site architecture, and rich snippets to ensure search engines love your site just as much as your users do. This pairs perfectly with our [UI/UX Design](/solutions/ui-ux-design) services to turn that new traffic into paying customers.",
-    benefits: ["Higher search rankings", "Increased organic traffic", "Better brand visibility", "Optimized site structure"]
+    features: ["Dynamic Responses", "Intent Detection", "Conversion Paths"],
+    detailedContent: "Instead of static pages, I build flows that guide users through conversations. Visitors are engaged, asked the right questions, and moved toward action. This creates a natural path from interest to qualified lead without friction. This pairs perfectly with our [Interaction-Focused Design](/solutions/interaction-focused-design) to ensure a smooth and intuitive user experience.",
+    benefits: ["Higher conversion rates", "Better lead quality", "Clear user journeys", "More engagement"]
   },
   {
-    id: "ai-chatbots",
+    id: "ai-agents",
     icon: Bot,
-    title: "AI Chatbots",
-    description: "Intelligent conversational AI powered by the latest LLMs to engage visitors, answer questions, and convert leads 24/7.",
+    title: "AI Agents & Voice Assistants",
+    description: "AI that can chat, call, qualify leads, and handle real customer interactions without manual effort.",
     badge: "AI",
     color: "text-purple-500",
-    features: ["Custom Training", "Lead Capture", "24/7 Support"],
-    detailedContent: "Transform your customer experience with our AI Chatbot solutions. We build intelligent agents that understand context, answer complex queries, and guide visitors through your sales funnel—working tirelessly around the clock so you never miss an opportunity. When combined with our [Automation](/solutions/automation) workflows, these bots can book meetings and sync directly to your CRM.",
-    benefits: ["24/7 automated support", "Instant response times", "Higher conversion rates", "Reduced support workload"]
+    features: ["Voice Agents", "Multi-Step Actions", "Context Awareness"],
+    detailedContent: "I build AI systems that handle real conversations across chat and voice. These agents can answer questions, qualify leads, and take actions like booking or routing. They work continuously and adapt based on context. When combined with [Autonomous Workflows](/solutions/autonomous-workflows), these agents can sync directly to your CRM.",
+    benefits: ["Handles conversations automatically", "Works 24/7", "Reduces manual work", "Improves response speed"]
   },
   {
-    id: "analytics-crm",
+    id: "conversation-intelligence",
     icon: BarChart3,
-    title: "Analytics & CRM",
-    description: "Deep insights into user behavior with integrated CRM tools to track, nurture, and convert your leads effectively.",
+    title: "Conversation Intelligence",
+    description: "Understand what users ask, want, and do through real interactions and turn it into actionable insights.",
     badge: "Data",
     color: "text-orange-500",
-    features: ["User Tracking", "Lead Scoring", "Conversion Funnels"],
-    detailedContent: "Make data-driven decisions with our integrated analytics and CRM setups. We track the entire user journey, helping you understand where visitors drop off and which marketing channels deliver the highest ROI. These insights power our [AI Chatbots](/solutions/ai-chatbots) to deliver hyper-personalized experiences connected directly to your sales pipeline.",
-    benefits: ["Clear ROI tracking", "Actionable user insights", "Streamlined lead management", "Data-driven growth"]
+    features: ["Intent Tracking", "Lead Signals", "Behavior Insights"],
+    detailedContent: "I track conversations, actions, and user behavior to give you a clear view of what is working. Instead of just clicks, you see real intent and patterns that help you improve performance and decision making. These insights power our [AI Agents & Voice Assistants](/solutions/ai-agents) to deliver hyper-personalized experiences connected directly to your sales pipeline.",
+    benefits: ["Clear understanding of user intent", "Better decision making", "Improved conversion insights", "Data that actually matters"]
   },
   {
-    id: "automation",
+    id: "autonomous-workflows",
     icon: Zap,
-    title: "Automation",
-    description: "Streamline your workflows with smart automation for email sequences, lead routing, and business processes.",
+    title: "Autonomous Workflows",
+    description: "AI systems that take actions like booking, routing, updating, and following up without manual work.",
     badge: "Efficiency",
     color: "text-yellow-500",
-    features: ["Email Flows", "Webhooks", "Integrations"],
-    detailedContent: "Eliminate repetitive tasks and human error with custom business automation. From immediate lead follow-ups to complex multi-step workflows connecting different software platforms, we help your business operate faster and more efficiently. We can even pass data seamlessly into your [Analytics & CRM](/solutions/analytics-crm) systems so everything stays perfectly synced.",
-    benefits: ["Save countless hours", "Eliminate manual errors", "Faster response times", "Scalable operations"]
+    features: ["Auto Booking", "Lead Routing", "Task Execution"],
+    detailedContent: "I create workflows where AI does the work. From handling new leads to triggering follow-ups and updating systems, everything runs automatically. This reduces delays and keeps your business moving without constant input. We can even pass data seamlessly into your [Conversation Intelligence](/solutions/conversation-intelligence) systems so everything stays perfectly synced.",
+    benefits: ["Saves time daily", "No missed opportunities", "Faster operations", "Scales without extra effort"]
   },
   {
-    id: "ui-ux-design",
+    id: "custom-ai-solutions",
     icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces designed to delight users and maximize conversions with modern design principles.",
-    badge: "Design",
+    title: "Custom AI Solutions",
+    description: "We design practical AI systems, assistants, and automations tailored to your workflow, customers, and growth goals.",
+    badge: "Custom",
     color: "text-pink-500",
-    features: ["Responsive", "Accessible", "Dark Mode"],
-    detailedContent: "First impressions matter. Our UI/UX design focuses on creating visually stunning, highly intuitive interfaces that guide users naturally toward your business goals. We combine aesthetics with behavioral psychology to maximize engagement and conversions before handing it off for high-performance [Next.js Development](/solutions/nextjs-development).",
-    benefits: ["Higher user engagement", "Lower bounce rates", "Premium brand perception", "Intuitive user journeys"]
+    features: ["Custom Workflows", "Smart Assistants", "Growth Automation"],
+    detailedContent: "Every business works differently. We build custom AI systems designed around your specific processes, customer journey, and goals. From lead generation to internal automation, we create practical solutions that fit how you actually operate. Explore our [AI Agents & Voice Assistants](/solutions/ai-agents) and [Autonomous Workflows](/solutions/autonomous-workflows) to see what is possible.",
+    benefits: ["Built around your business", "Practical and outcome-focused", "Scales with your growth", "No generic templates"]
   }
-];
+]

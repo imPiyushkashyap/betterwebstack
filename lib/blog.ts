@@ -29,8 +29,8 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
 
         return posts.map(transformSanityPost)
     } catch (error) {
-        console.error('Error fetching blog posts from Sanity:', error)
-        throw error
+        console.error('Error fetching blog posts from Sanity. Check if NEXT_PUBLIC_SANITY_PROJECT_ID is correctly set.')
+        return []
     }
 }
 

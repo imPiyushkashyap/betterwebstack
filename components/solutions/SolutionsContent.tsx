@@ -12,11 +12,6 @@ import {
   Palette,
   CheckCircle2,
   Rocket,
-  Globe,
-  MessageSquare,
-  TrendingUp,
-  Workflow,
-  Layout
 } from "lucide-react";
 import Link from "next/link";
 

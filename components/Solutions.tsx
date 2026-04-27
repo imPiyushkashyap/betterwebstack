@@ -13,13 +13,13 @@ export default function Solutions() {
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
           <Badge variant="outline" className="mb-4 px-4 py-1 text-sm">
-            What We Offer
+            What I Offer
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-            Complete Web Solutions
+            Complete Better Solutions
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to build, launch, and scale your digital presence—all in one place.
+            Everything you need to build, launch, and scale your digital presence all in one place.
           </p>
         </div>
 
